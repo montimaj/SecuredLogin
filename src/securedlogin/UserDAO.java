@@ -16,16 +16,19 @@ public class UserDAO {
 	public static UserBean login(UserBean bean) {
 		try {
 			String userName=bean.getUserName(), passwd=bean.getPassWord();
-			String searchQuery="select * from users where uname="+"\""+userName+"\""+" and passwd="+"\""+passwd+"\"";
+			String searchQuery="select * from users where uname=? and passwd=?";
 			PreparedStatement preparedStatement=connect().prepareStatement(searchQuery);
+			preparedStatement.setString(1, userName);
+			preparedStatement.setString(2, passwd);
 			ResultSet rs=preparedStatement.executeQuery();
 			if(!rs.next()) {
 				System.out.println("Invalid username/password!");
 				bean.setValid(false);
 			}
 			else {
-				searchQuery="select * from profile where uname="+"\""+userName+"\"";
+				searchQuery="select * from profile where uname=?";
 				preparedStatement=connect().prepareStatement(searchQuery);
+				preparedStatement.setString(1, rs.getString(1));
 				rs=preparedStatement.executeQuery();
 				System.out.println("Logged in");
 				if(rs.next()) {

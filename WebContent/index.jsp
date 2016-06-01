@@ -10,9 +10,8 @@
 <body>
 <h1>Login</h1>
 <form id="frm" action="LoginServlet" method="POST">
-	Username: &nbsp;
-	<input type="text" name="uname" /><br/>
-	Password: &nbsp;&nbsp;<input type="password" name="passwd" /><br/>
+	Username: <input type="text" name="uname" /><br/><br/>
+	Password: &nbsp;<input type="password" name="passwd" /><br/>
 	<input type="submit" value="Login" />
 </form>
 </body>
