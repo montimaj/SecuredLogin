@@ -1,23 +1,19 @@
 package securedlogin;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDAO {
-	private static Connection connect() throws ClassNotFoundException, SQLException {
-		Connection con=null;
-		Class.forName("com.mysql.jdbc.Driver");
-		con=DriverManager.getConnection("jdbc:mysql://localhost:3306/securedlogin","sayantan","sm1234");		
-		return con;
-	}
+import securedlogin.util.ConnectionManager;
+
+public class UserDAO {	
 	public static UserBean login(UserBean bean) {
 		try {
 			String userName=bean.getUserName(), passwd=bean.getPassWord();
+			Connection connection=new ConnectionManager().connect();
 			String searchQuery="select * from users where uname=? and passwd=?";
-			PreparedStatement preparedStatement=connect().prepareStatement(searchQuery);
+			PreparedStatement preparedStatement=connection.prepareStatement(searchQuery);
 			preparedStatement.setString(1, userName);
 			preparedStatement.setString(2, passwd);
 			ResultSet rs=preparedStatement.executeQuery();
@@ -27,7 +23,7 @@ public class UserDAO {
 			}
 			else {
 				searchQuery="select * from profile where uname=?";
-				preparedStatement=connect().prepareStatement(searchQuery);
+				preparedStatement=connection.prepareStatement(searchQuery);
 				preparedStatement.setString(1, rs.getString(1));
 				rs=preparedStatement.executeQuery();
 				System.out.println("Logged in");
@@ -36,6 +32,7 @@ public class UserDAO {
 					bean.setAddress(rs.getString(3));
 				}
 				bean.setValid(true);
+				connection.close();
 			}
 		}catch(ClassNotFoundException|SQLException e) {
 			e.printStackTrace();
