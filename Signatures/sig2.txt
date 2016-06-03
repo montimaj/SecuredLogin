@@ -1,0 +1,11 @@
+'or 1+1--
+admin
+';drop table foo
+'union
+'OR IF((ASCII(MID(({INJECTON}),1,1)) = 100),SLEEP(14),1) = 0 LIMIT 1--
+';exec()
+foo
+'or 1=1 --
+<script>alert('foo')</script>
+'and like '%' --
+bar
