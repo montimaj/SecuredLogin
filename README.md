@@ -3,5 +3,5 @@ Detection, Classification and Prevention of SQLi and XSS attacks on a Java WebAp
 
 The project is ongoing. See here for the project proposal: https://drive.google.com/open?id=0B-GxdHfNijAobEN3bGZYc3lLbDA
 
-![alt tag] (https://drive.google.com/open?id=0B-GxdHfNijAoV0Zjc0lfZ3g2a2M)
+Sample screenshot of Log DB: https://goo.gl/pn1rPH
 
