@@ -31,12 +31,12 @@ public class AttackDetector {
 		return "SQLi";
 	}	
 	private String detectAttackType(int regexIndex) {
-		if(regexIndex==regexFileLines-2)
+		text=text.toLowerCase();
+		if(regexIndex==regexFileLines-2 && !text.contains("src"))
 			return "Reflective";
-		else if(regexIndex==regexFileLines-1)
+		else if(regexIndex==regexFileLines-1 || text.contains("src"))
 			return "Stored";
-		else {
-			text=text.toLowerCase();
+		else {			
 			if(regexIndex==0) {
 				if(isAlternateEncoding())
 					return "Alternate encoding";
